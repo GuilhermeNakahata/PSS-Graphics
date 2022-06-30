@@ -16,7 +16,7 @@
 
 ## Slides 📝
 
-TODO
+TOs slides utiizado na aula pode ser visto aqui [SLIDE](./Aula_PSS.pdf).
 	
 
 ---
