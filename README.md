@@ -16,8 +16,13 @@
 
 ## Slides 📝
 
-TOs slides utiizado na aula pode ser visto aqui [SLIDE](./Aula_PSS.pdf).
-	
+O slide utiizado na aula pode ser visto aqui [SLIDE](./Aula_PSS.pdf).
+
+---
+
+## Exemplo prático 📝
+
+O exemplo prático apresentado na aula pode ser visto aqui [EXEMPLO PRATICO](./Exemplo.py).
 
 ---
 
