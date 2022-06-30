@@ -32,20 +32,25 @@ def main():
     fileNameSecondModel = sys.argv[2]
 
     renderers = OrderedDict()
-    renderers['flatSphereRenderer'] = CreateSphere(1)
-    renderers['flatModelRenderer'] = CreateModel(1, fileNameModel)
-    renderers['flatIsoSurfaceRenderer'] = CreateIsoSurface(1)
-    renderers['flatSecondModelRenderer'] = CreateSecondModel(1, fileNameSecondModel)
+    renderers['WireframeSphereRenderer'] = CreateSphere(1)
+    renderers['fWireframeModelRenderer'] = CreateModel(1, fileNameModel)
+    renderers['WireframeIsoSurfaceRenderer'] = CreateIsoSurface(1)
+    renderers['WireframeSecondModelRenderer'] = CreateSecondModel(1, fileNameSecondModel)
     
-    renderers['GhourandSphereRenderer'] = CreateSphere(2)
-    renderers['GhourandModelRenderer'] = CreateModel(2, fileNameModel)
-    renderers['GhourandIsoSurfaceRenderer'] = CreateIsoSurface(2)
-    renderers['GhourandSecondModelRenderer'] = CreateSecondModel(2, fileNameSecondModel)
+    renderers['flatSphereRenderer'] = CreateSphere(2)
+    renderers['flatModelRenderer'] = CreateModel(2, fileNameModel)
+    renderers['flatIsoSurfaceRenderer'] = CreateIsoSurface(2)
+    renderers['flatSecondModelRenderer'] = CreateSecondModel(2, fileNameSecondModel)
+    
+    renderers['GhourandSphereRenderer'] = CreateSphere(3)
+    renderers['GhourandModelRenderer'] = CreateModel(3, fileNameModel)
+    renderers['GhourandIsoSurfaceRenderer'] = CreateIsoSurface(3)
+    renderers['GhourandSecondModelRenderer'] = CreateSecondModel(3, fileNameSecondModel)
 
-    renderers['PhongSphereRenderer'] = CreateSphere(3)
-    renderers['PhongModelRenderer'] = CreateModel(3, fileNameModel)
-    renderers['PhongIsoSurfaceRenderer'] = CreateIsoSurface(3)
-    renderers['PhongSecondModelRenderer'] = CreateSecondModel(3, fileNameSecondModel)
+    renderers['PhongSphereRenderer'] = CreateSphere(4)
+    renderers['PhongModelRenderer'] = CreateModel(4, fileNameModel)
+    renderers['PhongIsoSurfaceRenderer'] = CreateIsoSurface(4)
+    renderers['PhongSecondModelRenderer'] = CreateSecondModel(4, fileNameSecondModel)
     
     keys = list(renderers.keys())
 
@@ -53,7 +58,7 @@ def main():
 
     rendererSize = 256
     xGridDimensions = 4
-    yGridDimensions = 3
+    yGridDimensions = 4
 
     renderWindow.SetSize(rendererSize * xGridDimensions, rendererSize * yGridDimensions)
     renderWindow.SetWindowName('FlatGhourandPhong - Guilherme Nakahata')
@@ -94,11 +99,13 @@ def CreateSphere(flat):
     actor = vtkActor()
     actor.SetMapper(mapper)
     actor.GetProperty().SetColor(colors.GetColor3d('Gold'))
-    if (flat == 1):
+    if(flat == 1):
+        actor.GetProperty().SetRepresentationToWireframe()
+    elif (flat == 2):
         actor.GetProperty().SetInterpolationToFlat()
-    elif(flat == 2):
-        actor.GetProperty().SetInterpolationToGouraud()
     elif(flat == 3):
+        actor.GetProperty().SetInterpolationToGouraud()
+    elif(flat == 4):
         actor.GetProperty().SetInterpolationToPhong()
     renderer = vtkRenderer()
     renderer.AddActor(actor)
@@ -124,11 +131,13 @@ def CreateCylinder(flat):
     actor = vtkActor()
     actor.SetMapper(mapper)
     actor.GetProperty().SetColor(colors.GetColor3d('Lavender'))
-    if (flat == 1):
+    if(flat == 1):
+        actor.GetProperty().SetRepresentationToWireframe()
+    elif (flat == 2):
         actor.GetProperty().SetInterpolationToFlat()
-    elif(flat == 2):
-        actor.GetProperty().SetInterpolationToGouraud()
     elif(flat == 3):
+        actor.GetProperty().SetInterpolationToGouraud()
+    elif(flat == 4):
         actor.GetProperty().SetInterpolationToPhong()
     renderer = vtkRenderer()
     renderer.AddActor(actor)
@@ -153,11 +162,13 @@ def CreateIsoSurface(flat):
     contourMapper.SetScalarRange(0, 7)
     actor = vtkActor()
     actor.SetMapper(contourMapper)
-    if (flat == 1):
+    if(flat == 1):
+        actor.GetProperty().SetRepresentationToWireframe()
+    elif (flat == 2):
         actor.GetProperty().SetInterpolationToFlat()
-    elif(flat == 2):
-        actor.GetProperty().SetInterpolationToGouraud()
     elif(flat == 3):
+        actor.GetProperty().SetInterpolationToGouraud()
+    elif(flat == 4):
         actor.GetProperty().SetInterpolationToPhong()
         
     actor.GetProperty().SetDiffuseColor(1,0,0)
@@ -187,11 +198,13 @@ def CreateModel(flat, fileName):
     actor = vtkActor()
     actor.SetMapper(mapper)
     actor.GetProperty().SetColor(colors.GetColor3d('DarkViolet'))
-    if (flat == 1):
+    if(flat == 1):
+        actor.GetProperty().SetRepresentationToWireframe()
+    elif (flat == 2):
         actor.GetProperty().SetInterpolationToFlat()
-    elif(flat == 2):
-        actor.GetProperty().SetInterpolationToGouraud()
     elif(flat == 3):
+        actor.GetProperty().SetInterpolationToGouraud()
+    elif(flat == 4):
         actor.GetProperty().SetInterpolationToPhong()
         
     actor.GetProperty().SetDiffuseColor(1,0,0)
@@ -219,11 +232,13 @@ def CreateSecondModel(flat, fileName):
     actor = vtkActor()
     actor.SetMapper(mapper)
     actor.GetProperty().SetColor(colors.GetColor3d('DarkGreen'))
-    if (flat == 1):
+    if(flat == 1):
+        actor.GetProperty().SetRepresentationToWireframe()
+    elif (flat == 2):
         actor.GetProperty().SetInterpolationToFlat()
-    elif(flat == 2):
-        actor.GetProperty().SetInterpolationToGouraud()
     elif(flat == 3):
+        actor.GetProperty().SetInterpolationToGouraud()
+    elif(flat == 4):
         actor.GetProperty().SetInterpolationToPhong()
     
     renderer = vtkRenderer()
